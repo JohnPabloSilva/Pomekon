@@ -1,0 +1,11 @@
+Esse programa/game tem o intuito de mostra o aprendizado do programador, nenhum fim lucrativo é buscado com esse arquivo
+
+Gostaria de deixar aqui as coisas que não consegui fazer, pois não encontrei nenhum site, vídeo etc que pudesse me ajudar
+ou porque não fui capaz de aprender
+
+1 - Texto animado, eu achei textos animados, mas eles por algum motivo ficavam na tela se repetindo e não saiam
+2 - Diminuir a opacidade do botão, este eu achei alguns vídeos, mas nada do jeito que eu queria
+3 - Mudar de tela quando a partida chegasse ao fim, repito, encontrei vídeos sobre isso, mas nada de um jeito mais prático
+
+Em síntese é isso, talvez daqui algum tempo quando eu aprender mais sobre pygame eu possa colocar e ajustar o código.
+- John Pablo TW
