@@ -8,4 +8,45 @@ ou porque não fui capaz de aprender
 3 - Mudar de tela quando a partida chegasse ao fim, repito, encontrei vídeos sobre isso, mas nada de um jeito mais prático
 
 Em síntese é isso, talvez daqui algum tempo quando eu aprender mais sobre pygame eu possa colocar e ajustar o código.
-- John Pablo TW
+- John Pablo TW, 03/10/2023
+
+***ATUALIZAÇÃO*** 
+
+Eu consegui adicionar coisas que melhoram a experiência do usuário e tentei melhorar meus códigos de maneira que 
+as coisas não se tornassem teias de aranhas.
+
+Em relação ao que vemos na tela:
+    Adicionei telas de inicio, pause e de "encerramento", todas elas de maneira muito arcaica, mas que funcionam com o game.
+    Cada tela tem seu botão que leva até ela, com excessão a inicial.
+    Os parâmetros do adversário estão na tela, assim como de quem é a vez.
+    Também adicionei coisas que melhoram a imersão do usuário, como o tempo de espera do ataque do oponente e tirando os
+    botões da tela nesse momento.
+    Outra coisa foi a possibilidade de reiniciar uma partida.
+
+Em relação ao código:
+    Ainda não tenho de consegui legibilidade no código, afinal eu misturo inglês e português em muitos momentos, além
+    de faltar fazer as documentações.
+    Mas, acredito que os códigos ficaram mais enxutos, por exemblo: o sistema de batalha é algo separa da classe Pomekon,
+    reduzindo as linhas da classe e permitindo dinâmica no código do jogo. Continuando na classe Pomekon, eu a encapsulei,
+    apesar de não ver utilidade nesse código em específco. Eu aprendi polimorfismo, (sim eu tinha usado anteriormente e
+    nem sabia), então isso permitiu a criação do arquivo 'battle_system'.
+    Outra coisa foi em relação aos parâmetros que aparecem na tela, eles são sempre os mesmos, assim reduzi para apenas
+    uma função, além de criar uma função que tira os botões da tela.
+    Os códigos dos botões em si não mudaram, mas alguns deles permitem a "troca" de tela. Apesar de não haver mudanças,
+    os botões de iteração do jogador na batalha foram todos reduzidos á uma única classe.
+    O arquivo principal, antigamente chamado de 'tela_de_batalha' e agora chamado de 'jogo', sofreu essa alteração pois
+    agora é mais do que a tela de luta dos pomekons e pode alternar entre inicio, jogo e pause. O código cresceu pouco
+    graças às mudanças feitas nos outros arquivos. Além da criação de uma variável que permite a "troca de tela".
+
+    Coisas que podem melhorar:
+
+    O código principal pode ficar mais curso, acredito eu.
+    O texto animado também poderia ser adicionado.
+    Quanto a opacidade, ainda não sei fazer.
+
+Gostaria de agradecer ao meu professor, Manoel Limeira Júnioir que me ensinou polimorfismo e encapsulamento na UFAC e
+espero que me ensine ainda mais.
+
+-John Pablo TW , 11/01/2024
+
+

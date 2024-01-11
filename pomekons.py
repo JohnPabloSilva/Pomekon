@@ -1,80 +1,73 @@
-from random import randint
 from pygame import transform
 
 class Pomekon:
+
+    __slots__ = ['image', '_nome', '_maxhp','_hp', '_atk1', '_atk2', '_dano1', '_dano2', '_stamina', '_maxstamina']
+
     def __init__(self,nome, hp, atk1, dano1, atk2, dano2, stamina, image):
         self.image = image
-        self.nome = nome
-        self.hp = int(hp)
-        self.atk1 = atk1 #Nome do ataque 1
-        self.atk2 = atk2 #Nome do ataque 2
-        self.stamina = int(stamina) #Quantidade de eneegia
-        self.dano1 = int(dano1) #Dano do ataque 1
-        self.dano2 = int(dano2) #Dano do ataque 2
-        self.max_stamina = int(stamina)
-
-    def ataque_fraco(self):
-        prob = randint(0,101) #Calcula a probabilidade do ataque acertar
-        #Para o ataque fraco
-        #A stamina diminui independetemente se o ataque acerta ou não, mas dependendo do ataque ele pode perder mais ou menos stamina
-        self.stamina = self.stamina - 4
-        if 100 >= prob >= 60:
-            x1 = self.dano1 + 5
-            return x1
-        elif 60 > prob >= 20:
-            x1 = self.dano1
-            return x1
-        else:
-            return 0
-             
-    def ataque_forte(self):
-        prob = randint(0,101) #Calcula a probabilidade do ataque acertar
-        #Para o taque forte
-        #A stamina diminui independetemente se o ataque acerta ou não, mas dependendo do ataque ele pode perder mais ou menos stamina
-        self.stamina = self.stamina - 6
-        if 100 >= prob >= 60:
-            x1 = self.dano2 + 10
-            return self.dano2
-        elif 60 > prob >= 20:
-            x1 = self.dano2
-            return x1
-        else:
-            return 0
+        self._nome = nome
+        self._maxhp = int(hp) #Quantidade máxima de hp da espécie
+        self._hp = int(hp) #Quantidade de hp em luta
+        self._atk1 = atk1 #Nome do ataque 1
+        self._atk2 = atk2 #Nome do ataque 2
+        self._dano1 = int(dano1) #Dano do ataque 1
+        self._dano2 = int(dano2) #Dano do ataque 2
+        self._stamina = int(stamina) #Quantidade de energia em luta
+        self._maxstamina = int(stamina) #Quantidade máxima de energia
             
     #Para o mob perder vida durante a batalha
     def apanhar(self, dano_sofrido):
-        self.hp = self.hp - dano_sofrido
+        self._hp = self._hp - dano_sofrido
 
     #Para recuperar a energia do mob
     def dormir(self):
-        self.stamina = self.stamina + 4
-
-    #Pra saber se o ataque é realmete possível de ser realizado
-    def da_pra_bater(self, atk):
-        if atk == 1 and self.stamina >= 4:
-            return True
-        elif atk == 1 and self.stamina < 4:
-            return False
-        elif atk == 2 and self.stamina >= 6:
-            return True
-        elif atk == 2 and self.stamina < 6:
-            return False
+        self._stamina = self._stamina + 4
         
     #Funções para consertar e impedir erros
     def conserta_stamina(self):
-        if self.stamina < 0:
-            self.stamina = 0
-        elif self.stamina > self.max_stamina:
-            self.stamina = self.max_stamina 
+        if self._stamina < 0:
+            self._stamina = 0
+        elif self._stamina > self._maxstamina:
+            self._stamina = self._maxstamina
 
     def conserta_hp(self):
-        if self.hp < 0:
-            self.hp = 0
+        if self._hp < 0:
+            self._hp = 0
+
+    #Função para "reiniciar o mob" tanto para hp para stamina
+    def restaura_hp(self):
+        self._hp = self._maxhp
+    
+    def restaura_stamina(self):
+        self._stamina = self._maxstamina
+
+    #Função para pegar o nome, stamina, hp e atk
+    def get_name(self):
+        return self._nome
+    
+    def get_stamina(self):
+        return self._stamina 
+
+    def get_hp(self):
+        return self._hp
+    
+    def get_atk(self, num):
+        if num == 1:
+            return self._dano1
+        elif num == 2:
+            return self._dano2
+        
+    #Função para setar a stamina, isso é, gastar ela
+    def energia_gasta(self, num):
+        self._stamina -= num
+
     #Alterando as imagens de acordo com o necessário
     def transformar(self, escala):
         largura = self.image.get_width()
         altura = self.image.get_height()
         self.image = transform.scale(self.image, (int(largura*escala), int(altura*escala)))
+
     #Colocando os mobs na tela
     def mob_on(self, surface, x, y):
         surface.blit(self.image, (x,y))
@@ -82,6 +75,8 @@ class Pomekon:
         self.image = transform.flip(self.image, True, False)
 
 
+#Tem 82 linhas na versão no inicio 02/01/2024
+#Tem 75 linhas na versão do dia 11/01/2024
 
 
 

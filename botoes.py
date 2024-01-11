@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 
 class Buttons:
     def __init__(self, image, scale, x, y):
@@ -29,7 +30,8 @@ class Buttons:
 
 #Para botões de ataque, será feita uma classe diferente
 #Nessa classe terá um parâmetro a mais (de imagem) e uma função para alternar imagens       
-class Buttons_atk:
+class ButtonsPlayer:
+
     def __init__(self, image, image2, escala, x, y):
         largura = image.get_width()
         altura = image.get_height()
@@ -58,4 +60,5 @@ class Buttons_atk:
 
     def put_it_on_nfuc(self, surface):
         surface.blit(self.image2, (self.rect.x, self.rect.y))
+
         
