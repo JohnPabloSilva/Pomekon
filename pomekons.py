@@ -22,15 +22,12 @@ class Pomekon:
 
     #Para recuperar a energia do mob
     def dormir(self):
-        self._stamina = self._stamina + 4
-        
-    #Funções para consertar e impedir erros
-    def conserta_stamina(self):
-        if self._stamina < 0:
-            self._stamina = 0
-        elif self._stamina > self._maxstamina:
+        if self._stamina + 4 > self._maxstamina:
             self._stamina = self._maxstamina
-
+        else:
+            self._stamina = self._stamina + 4
+        
+    #Função para consertar e impedir erros
     def conserta_hp(self):
         if self._hp < 0:
             self._hp = 0
@@ -77,6 +74,7 @@ class Pomekon:
 
 #Tem 82 linhas na versão no inicio 02/01/2024
 #Tem 75 linhas na versão do dia 11/01/2024
+#Tem 72 linhas na versão do dia 19/01/2024
 
 
 

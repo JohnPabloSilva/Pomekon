@@ -40,7 +40,7 @@ Em relação ao código:
 
     Coisas que podem melhorar:
 
-    O código principal pode ficar mais curso, acredito eu.
+    O código principal pode ficar mais curto, acredito eu.
     O texto animado também poderia ser adicionado.
     Quanto a opacidade, ainda não sei fazer.
 
@@ -48,5 +48,22 @@ Gostaria de agradecer ao meu professor, Manoel Limeira Júnioir que me ensinou p
 espero que me ensine ainda mais.
 
 -John Pablo TW , 11/01/2024
+
+***ATUALIZAÇÃO***
+
+Usei herança na classe ButtonsPlayer, pois ela basicamente se reutiliza de boas partes da classe mãe Buttons.
+Entretanto eu vou retirar essa 'herança' e deixar só uma classe, para isso vou utilizar sobrecarga.
+
+Mudei algumas função 'dormir' da classe Pomekon para evitar o erro de a stamina do Pomekon ficar maior do que o
+permitido. A função 'conserta_stamina' foi deletada.
+
+A função 'who_won' também foi alterada, não sendo necessário mais usar as coordenadas para as palavras escritas 
+na tela visto que o centro da tela sempre vai ser o mesmo. Além disso as mensagens agora estão em inglês, para
+combinar com os botões. (Logo mais eu vou trocar os nomes das variáveis para inglês e as notas de atualização
+para inglês)
+
+-John Pablo TW , 19/01/2024
+
+
 
 

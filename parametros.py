@@ -19,11 +19,11 @@ def taking_out_buttons(sleep_button, atkS_button, atkW_button, screen):
     atkS_button.put_it_on_nfuc(screen)
     atkW_button.put_it_on_nfuc(screen)
     
-def who_won(mob_player, mob_ia, style_font, color, x, y, screen):
+def who_won(mob_player, mob_ia, style_font, color, screen):
     if mob_player.get_hp() <= 0:
-        escreve('GAME OVER!', style_font, color, x, y, screen)
+        escreve('GAME OVER!', style_font, color, 78, 48, screen)
     elif mob_ia.get_hp() <= 0:
-        escreve('YOU WON!', style_font, color, x, y, screen)
+        escreve('YOU WON!', style_font, color, 86, 48, screen)
 
 def things_on_battle(mob_player, mob_ia, image_stamina, image_hp, text_font, color, screen):
 #Colocando os desenhos na tela (referente ao usuário)

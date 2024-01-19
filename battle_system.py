@@ -65,7 +65,6 @@ def fim_de_batalha(player, ia):
         return True
     elif ia.get_hp() <= 0:
         ia.conserta_hp()
-        ia.conserta_stamina()
         return True
     else:
         return False
@@ -92,5 +91,8 @@ def put_buttons_player(player, sleep_button, atkS_button, atkW_button, screen):
                 atkW_button.put_it_on_func(screen)
             else:
                 atkW_button.put_it_on_nfuc(screen)
+
+#Tem 94 linhas na versão do dia 11/01/2024
+#Tem 93 linhas na versão do dia 19/01/2024
 
 

@@ -110,10 +110,9 @@ while run:
         #Apertando
         if fim == False:
             if vez == 1:
-                escreve('SUA VEZ DE ATACAR', text_font, cor, 5, 10, tela)
+                escreve('YOUR TURN', text_font, cor, 5, 10, tela)
                 #Colocando botões na tela
                 put_buttons_player(pica_chu, botao_dormir, botao_atkforte, botao_atkfraco, tela)
-                pica_chu.conserta_stamina()
                 pica_chu.conserta_hp()
                 #Escolha do player
                     #Apertando o botão de ataque forte
@@ -133,7 +132,7 @@ while run:
                 fim = fim_de_batalha(pica_chu, squirtle)
             #Usando algo que era pra ser uma IA
             else:
-                escreve('VEZ DO OPONENTE', text_font, cor, 5, 10, tela)
+                escreve("OPPONENT'S TURN", text_font, cor, 5, 10, tela)
                 pygame.display.update()
                 sleep(1)
                 taking_out_buttons(botao_dormir, botao_atkforte, botao_atkfraco, tela)
@@ -143,7 +142,7 @@ while run:
                 #Fim da batalha?
                 fim = fim_de_batalha(pica_chu, squirtle)
         else:
-            who_won(pica_chu, squirtle, text_font2, cor, 78, 48, tela)
+            who_won(pica_chu, squirtle, text_font2, cor, tela)
             botao_restart_ence.put_it_on(tela)
             botao_sair_encerra.put_it_on(tela)
             if botao_restart_ence.draw():

@@ -4,7 +4,6 @@ from battle_system import *
 def inteligencia(mob_ia, user):
     print(f'{mob_ia.get_name()}: HP{mob_ia.get_hp()} EN:{mob_ia.get_stamina()}')
     mob_ia.conserta_hp()
-    mob_ia.conserta_stamina()
     desejo = randint(1,3)
     if desejo == 1:
         mob_ia.dormir()
@@ -24,4 +23,3 @@ def inteligencia(mob_ia, user):
             mob_ia.dormir()
 
     mob_ia.conserta_hp()
-    mob_ia.conserta_stamina()
