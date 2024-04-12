@@ -28,6 +28,7 @@ class Pomekon:
             self._stamina = self._stamina + 4
         
     #Função para consertar e impedir erros
+
     def conserta_hp(self):
         if self._hp < 0:
             self._hp = 0

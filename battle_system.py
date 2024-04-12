@@ -61,7 +61,6 @@ def fim_de_batalha(player, ia):
     #caso um dos dois tenha hp menor ou igual a 0
     if player.get_hp() <= 0:
         player.conserta_hp()
-        player.conserta_stamina()
         return True
     elif ia.get_hp() <= 0:
         ia.conserta_hp()

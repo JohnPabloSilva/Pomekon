@@ -35,40 +35,40 @@ nao_funciona = pygame.mixer.Sound('sons/button_press.mp3')
 i_stamina = pygame.image.load('imagens/energy.png').convert_alpha()
 i_ptdevida = pygame.image.load('imagens/Coracao.png').convert_alpha()
 #Carragando imagens dos mobs
-i_pikachu = pygame.image.load('imagens/pikachu.png').convert_alpha()
-i_squirt = pygame.image.load('imagens/squirtle_32.png').convert_alpha()
+i_panda = pygame.image.load('imagens/panda.png').convert_alpha()
+i_redpanda = pygame.image.load('imagens/red_panda.png').convert_alpha()
 
 #Criando os botões da tela do inicio 
-botao_start_menu = botoes.Buttons(i_start, 1.0, 88, 43)
-botao_sair_menu = botoes.Buttons(i_quit_menu, 1.0, 88, 85)
+botao_start_menu = botoes.Buttons(1.0, 88, 43, i_start)
+botao_sair_menu = botoes.Buttons(1.0, 88, 85, i_quit_menu)
 #Criando os botões do menu do pause
-botao_resume = botoes.Buttons(i_resume, 1.0, 88, 22)
-botao_restart = botoes.Buttons(i_restart, 1.0, 88, 64)
-botao_sair_pause = botoes.Buttons(i_quit_menu, 1.0, 88, 106)
+botao_resume = botoes.Buttons(1.0, 88, 22, i_resume)
+botao_restart = botoes.Buttons(1.0, 88, 64, i_restart)
+botao_sair_pause = botoes.Buttons(1.0, 88, 106, i_quit_menu)
 #Criando botões que encerramento da partida
-botao_restart_ence = botoes.Buttons(i_restart, 1.0, 88, 73)
-botao_sair_encerra = botoes.Buttons(i_quit_menu, 1.0, 88, 115)
+botao_restart_ence = botoes.Buttons(1.0, 88, 73, i_restart)
+botao_sair_encerra = botoes.Buttons(1.0, 88, 115, i_quit_menu)
 
 #Criando os botões da tela de jogo
-botao_atkforte = botoes.ButtonsPlayer(i_atkforte, i_noatkfor, 1.0, 185, 135)
-botao_atkfraco = botoes.ButtonsPlayer(i_atkfraco, i_noatkfra, 1.0, 185, 114)
-botao_dormir = botoes.ButtonsPlayer(i_descansa, i_nodescan, 1.0, 185, 93)
-botao_sair = botoes.Buttons(i_quitgame, 1.0, 225, 4)
-botao_pause = botoes.Buttons(i_pause, 1.0, 225,20)
+botao_atkforte = botoes.Buttons(1.0, 185, 135, i_atkforte, i_noatkfor)
+botao_atkfraco = botoes.Buttons(1.0, 185, 114, i_atkfraco, i_noatkfra)
+botao_dormir = botoes.Buttons(1.0, 185, 93, i_descansa, i_nodescan)
+botao_sair = botoes.Buttons(1.0, 225, 4, i_quitgame)
+botao_pause = botoes.Buttons(1.0, 225,20, i_pause)
 #Escolhendo a fonte e cor
 text_font = pygame.font.SysFont("Arial", 13)
 text_font2 = pygame.font.SysFont("Arial", 16)
 cor = (255, 165, 0 )
 
 #criando o pomekon
-pica_chu = Pomekon('Picachu', 50, 'Choque do Trovão', 10, 'Tempestade Elétrica', 20, 10, i_pikachu)
-squirtle = Pomekon('Squirtle', 50, 'Jato de água', 10, 'Pulso de água', 20, 10, i_squirt)
+panda = Pomekon('Panda', 50, 'Wuxi finger scam', 10, 'Belly', 20, 10, i_panda)
+red_panda = Pomekon('Red_panda', 50, 'Dancing blow', 10, 'Big hug', 20, 10, i_redpanda)
 
 #O pikachu vai ser o 'protagonista' da luta, então ele precisa de destaque na tela
-pica_chu.transformar(4.0)
-#O Squirtle vai ser o adversário, ele fica no fundo, mas ainda precisa ser visto e no sentido invertido
-squirtle.transformar(3.0)
-squirtle.invertendoX()
+panda.transformar(4.0)
+#O red_panda vai ser o adversário, ele fica no fundo, mas ainda precisa ser visto e no sentido invertido
+red_panda.transformar(3.0)
+red_panda.invertendoX()
 #Decidindo quem começa
 vez = 1
 
@@ -88,8 +88,8 @@ state = 'Inicio'
 while run:
     tela.fill((65,105,225))
     if state == 'Inicio':
-        botao_start_menu.put_it_on(tela)
-        botao_sair_menu.put_it_on(tela)
+        botao_start_menu.put_it_on_func(tela)
+        botao_sair_menu.put_it_on_func(tela)
         if botao_start_menu.draw():
             print('Iniciando')
             state = 'Jogando'
@@ -99,67 +99,67 @@ while run:
 
     if state == 'Jogando':
         #Colocando botao de sair do jogo
-        botao_sair.put_it_on(tela)
-        botao_pause.put_it_on(tela)
+        botao_sair.put_it_on_func(tela)
+        botao_pause.put_it_on_func(tela)
         if botao_sair.draw():
             run = False
         if botao_pause.draw():
             state = 'Pause'
         #Colocando todos os parâmetro do pokemon do player e do adversário
-        things_on_battle(pica_chu, squirtle, i_stamina, i_ptdevida, text_font, cor, tela)
+        things_on_battle(panda, red_panda, i_stamina, i_ptdevida, text_font, cor, tela)
         #Apertando
         if fim == False:
             if vez == 1:
                 escreve('YOUR TURN', text_font, cor, 5, 10, tela)
                 #Colocando botões na tela
-                put_buttons_player(pica_chu, botao_dormir, botao_atkforte, botao_atkfraco, tela)
-                pica_chu.conserta_hp()
+                put_buttons_player(panda, botao_dormir, botao_atkforte, botao_atkfraco, tela)
+                panda.conserta_hp()
                 #Escolha do player
                     #Apertando o botão de ataque forte
                 if botao_atkforte.draw():
                     print('ATAQUE FORTE')
-                    vez = attacking_strong(pica_chu, squirtle)
+                    vez = attacking_strong(panda, red_panda)
                     #Apertando o botão de ataque fraco
                 if botao_atkfraco.draw():
                     print('ATAQUE FRACO')
-                    vez = attacking_weak(pica_chu, squirtle)
+                    vez = attacking_weak(panda, red_panda)
                     #Apertando o botão para dormir
                 if botao_dormir.draw():
                     print('DORMIU')
-                    pica_chu.dormir()
+                    panda.dormir()
                     vez = 2
                 #Fim da batalha?
-                fim = fim_de_batalha(pica_chu, squirtle)
+                fim = fim_de_batalha(panda, red_panda)
             #Usando algo que era pra ser uma IA
             else:
                 escreve("OPPONENT'S TURN", text_font, cor, 5, 10, tela)
                 pygame.display.update()
                 sleep(1)
                 taking_out_buttons(botao_dormir, botao_atkforte, botao_atkfraco, tela)
-                inteligencia(squirtle, pica_chu)
+                inteligencia(red_panda, panda)
                 sleep(1)
                 vez = 1
                 #Fim da batalha?
-                fim = fim_de_batalha(pica_chu, squirtle)
+                fim = fim_de_batalha(panda, red_panda)
         else:
-            who_won(pica_chu, squirtle, text_font2, cor, tela)
-            botao_restart_ence.put_it_on(tela)
-            botao_sair_encerra.put_it_on(tela)
+            who_won(panda, red_panda, text_font2, cor, tela)
+            botao_restart_ence.put_it_on_func(tela)
+            botao_sair_encerra.put_it_on_func(tela)
             if botao_restart_ence.draw():
-                restart(pica_chu, squirtle)
+                restart(panda, red_panda)
                 fim = False
             if botao_sair_encerra.draw():
                 state = 'Inicio'
 
     if state == 'Pause':
         #Colocando botao de sair do jogo
-        botao_sair_pause.put_it_on(tela)
-        botao_restart.put_it_on(tela)
-        botao_resume.put_it_on(tela)
+        botao_sair_pause.put_it_on_func(tela)
+        botao_restart.put_it_on_func(tela)
+        botao_resume.put_it_on_func(tela)
         if botao_resume.draw():
             state = 'Jogando'
         if botao_restart.draw():
-            restart(pica_chu, squirtle)
+            restart(panda, red_panda)
             state = 'Jogando'
         if botao_sair_pause.draw():
             run = False

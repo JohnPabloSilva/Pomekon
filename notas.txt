@@ -26,7 +26,7 @@ Em relação ao que vemos na tela:
 Em relação ao código:
     Ainda não tenho de consegui legibilidade no código, afinal eu misturo inglês e português em muitos momentos, além
     de faltar fazer as documentações.
-    Mas, acredito que os códigos ficaram mais enxutos, por exemblo: o sistema de batalha é algo separa da classe Pomekon,
+    Mas, acredito que os códigos ficaram mais enxutos, por exemplo: o sistema de batalha é algo separado da classe Pomekon,
     reduzindo as linhas da classe e permitindo dinâmica no código do jogo. Continuando na classe Pomekon, eu a encapsulei,
     apesar de não ver utilidade nesse código em específco. Eu aprendi polimorfismo, (sim eu tinha usado anteriormente e
     nem sabia), então isso permitiu a criação do arquivo 'battle_system'.
@@ -44,10 +44,10 @@ Em relação ao código:
     O texto animado também poderia ser adicionado.
     Quanto a opacidade, ainda não sei fazer.
 
-Gostaria de agradecer ao meu professor, Manoel Limeira Júnioir que me ensinou polimorfismo e encapsulamento na UFAC e
+Gostaria de agradecer ao meu professor, Manoel Limeira Júnior que me ensinou polimorfismo e encapsulamento na UFAC e
 espero que me ensine ainda mais.
 
--John Pablo TW , 11/01/2024
+-John Pablo TW, 11/01/2024
 
 ***ATUALIZAÇÃO***
 
@@ -62,7 +62,15 @@ na tela visto que o centro da tela sempre vai ser o mesmo. Além disso as mensag
 combinar com os botões. (Logo mais eu vou trocar os nomes das variáveis para inglês e as notas de atualização
 para inglês)
 
--John Pablo TW , 19/01/2024
+-John Pablo TW, 19/01/2024
+
+*** ATUALIZAÇÃO ***
+
+Não adicionei nenhuma função, mas corrigi aprimorei os códigos dos botões, agora existe apenas uma classe chamada
+"Button" que permite uma sobrecarga para botões que precisam de uma opacidade.
+Em breve será feita a troca de idioma do repositório e adição dos nomes dos ataques na tela.
+
+-John Pablo TW, 11/04/2024
 
 
 
