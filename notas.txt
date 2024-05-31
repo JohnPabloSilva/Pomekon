@@ -72,6 +72,25 @@ Em breve será feita a troca de idioma do repositório e adição dos nomes dos 
 
 -John Pablo TW, 11/04/2024
 
+*** ATUALIZAÇÃO ***
+
+Adicionei código no arquivo principal "jogo", é um tempo criado entre os turnos pra mostrar os ataques realizados
+tanto pelo player quanto pela a IA. Os ataques aparecem em diferentes lugares da tela e com cores diferentes para
+demonstrar quem atacou. 
+
+COISAS PARA ADICIONAR 
+
+*Texto do nome dos animais de combate
+
+ERROS 
+
+*Eu ainda não sei o quê causa isso, mas não é possível pausar a tela enquanto o oponente ataca, ou enquanto os nomes
+dos ataques aparecem na tela
+
+-John Pablo TW, 12/04/2024
+
+É a função sleep, vou procurar como resolver isso
+
 
 
 

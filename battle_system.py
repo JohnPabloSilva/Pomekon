@@ -44,7 +44,7 @@ def attacking_strong(mob_player, mob_ia):
     test = da_pra_bater(mob_player.get_stamina(), 2)
     if test:
         ataque_forte(mob_player, mob_ia)
-        return 2 #Foi possível realizar o ataque
+        return 1.5 #Foi possível realizar o ataque
     else:
         return 1 #Não foi possível realizar o ataque
     
@@ -52,7 +52,7 @@ def attacking_weak(mob_player, mob_ia):
     test = da_pra_bater(mob_player.get_stamina(), 1)
     if test:
         ataque_fraco(mob_player, mob_ia)
-        return 2 #Foi possível realizar o ataque
+        return 1.5 #Foi possível realizar o ataque
     else:
         return 1 #Não foi possível realizar o ataque
     

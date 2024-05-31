@@ -55,10 +55,11 @@ botao_atkfraco = botoes.Buttons(1.0, 185, 114, i_atkfraco, i_noatkfra)
 botao_dormir = botoes.Buttons(1.0, 185, 93, i_descansa, i_nodescan)
 botao_sair = botoes.Buttons(1.0, 225, 4, i_quitgame)
 botao_pause = botoes.Buttons(1.0, 225,20, i_pause)
-#Escolhendo a fonte e cor
-text_font = pygame.font.SysFont("Arial", 13)
-text_font2 = pygame.font.SysFont("Arial", 16)
-cor = (255, 165, 0 )
+#Escolhendo a fonte e cores
+text_font = pygame.font.SysFont("Calibri", 13, bold=True)
+text_font2 = pygame.font.SysFont("Papirus", 16, bold=True)
+cor_amarela = (255, 165, 0 )
+cor_vermelh = (255, 25, 25)
 
 #criando o pomekon
 panda = Pomekon('Panda', 50, 'Wuxi finger scam', 10, 'Belly', 20, 10, i_panda)
@@ -71,6 +72,7 @@ red_panda.transformar(3.0)
 red_panda.invertendoX()
 #Decidindo quem começa
 vez = 1
+acao = 3
 
 #Printando de quem é a vez 
 user_time = False
@@ -106,43 +108,77 @@ while run:
         if botao_pause.draw():
             state = 'Pause'
         #Colocando todos os parâmetro do pokemon do player e do adversário
-        things_on_battle(panda, red_panda, i_stamina, i_ptdevida, text_font, cor, tela)
+        things_on_battle(panda, red_panda, i_stamina, i_ptdevida, text_font, cor_amarela, tela)
         #Apertando
         if fim == False:
             if vez == 1:
-                escreve('YOUR TURN', text_font, cor, 5, 10, tela)
+                escreve('YOUR TURN', text_font, cor_amarela, 5, 10, tela)
                 #Colocando botões na tela
                 put_buttons_player(panda, botao_dormir, botao_atkforte, botao_atkfraco, tela)
                 panda.conserta_hp()
                 #Escolha do player
                     #Apertando o botão de ataque forte
                 if botao_atkforte.draw():
-                    print('ATAQUE FORTE')
+                    acao = 2
                     vez = attacking_strong(panda, red_panda)
                     #Apertando o botão de ataque fraco
                 if botao_atkfraco.draw():
-                    print('ATAQUE FRACO')
+                    acao = 1
                     vez = attacking_weak(panda, red_panda)
                     #Apertando o botão para dormir
                 if botao_dormir.draw():
-                    print('DORMIU')
+                    acao = 0
                     panda.dormir()
-                    vez = 2
+                    vez = 1.5
                 #Fim da batalha?
                 fim = fim_de_batalha(panda, red_panda)
-            #Usando algo que era pra ser uma IA
-            else:
-                escreve("OPPONENT'S TURN", text_font, cor, 5, 10, tela)
+
+            elif vez == 1.5: #É um meio termo entre a troca de turnos
+                             #Serve para mostrar o nome dos ataques realizados no turno anterior
+                try:
+                    if acao == 1:
+                        escreve(panda.get_name_atk(1), text_font, cor_amarela, 85, 110, tela)
+                    elif acao == 2:
+                        escreve(panda.get_name_atk(2), text_font, cor_amarela, 85, 110, tela)
+                    elif acao == 0:
+                        escreve("SLEPPED", text_font, cor_amarela, 85, 110, tela)     
+                except:
+                    continue
                 pygame.display.update()
-                sleep(1)
+                #sleep(3)
+                pygame.time.delay(3000)
+                vez = 2
+
+            elif vez == 2: #Turno do oponente
+                pygame.display.update()
+                escreve("OPPONENT'S TURN", text_font, cor_amarela, 5, 10, tela)
+                pygame.display.update()
                 taking_out_buttons(botao_dormir, botao_atkforte, botao_atkfraco, tela)
-                inteligencia(red_panda, panda)
+                #Usando algo que era pra ser uma IA
+                acao = inteligencia(red_panda, panda)
                 sleep(1)
-                vez = 1
+                vez = 2.5
                 #Fim da batalha?
+                pygame.display.update()
                 fim = fim_de_batalha(panda, red_panda)
+
+            elif vez == 2.5: #É um meio termo entre a troca de turnos
+                             #Serve para mostrar o nome dos ataques realizados no turno anterior
+                try:
+                    if acao == 1:
+                        escreve(red_panda.get_name_atk(1), text_font, cor_vermelh, 95, 65, tela)
+                    elif acao == 2:
+                        escreve(red_panda.get_name_atk(2), text_font, cor_vermelh, 95, 65, tela)
+                    elif acao == 0:
+                        escreve("SLEPPED", text_font, cor_vermelh, 95, 65, tela)     
+                except:
+                    continue
+                pygame.display.update()
+                sleep(3)
+                vez = 1
+            
         else:
-            who_won(panda, red_panda, text_font2, cor, tela)
+            who_won(panda, red_panda, text_font2, cor_amarela, tela)
             botao_restart_ence.put_it_on_func(tela)
             botao_sair_encerra.put_it_on_func(tela)
             if botao_restart_ence.draw():
@@ -175,3 +211,4 @@ pygame.quit()
 
 #Tem 141 linhas  02/01/2024
 #Tem 173 linhas  11/01/2024
+#Tem 209 linhas  12/04/2024

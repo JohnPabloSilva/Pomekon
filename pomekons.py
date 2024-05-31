@@ -56,6 +56,12 @@ class Pomekon:
         elif num == 2:
             return self._dano2
         
+    def get_name_atk(self, num):
+        if num == 1:
+            return self._atk1
+        elif num == 2:
+            return self._atk2
+        
     #Função para setar a stamina, isso é, gastar ela
     def energia_gasta(self, num):
         self._stamina -= num
@@ -76,6 +82,7 @@ class Pomekon:
 #Tem 82 linhas na versão no inicio 02/01/2024
 #Tem 75 linhas na versão do dia 11/01/2024
 #Tem 72 linhas na versão do dia 19/01/2024
+#Tem 79 linhas na versão do dia 12/04/2024
 
 
 
